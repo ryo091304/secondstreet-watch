@@ -1,0 +1,29 @@
+name: SecondStreet Watch
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"   # ← 5分おき（GitHub無料の最短）
+  workflow_dispatch:
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install deps
+        run: |
+          npm init -y
+          npm install puppeteer node-fetch@2
+
+      - name: Run watcher
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
+        run: node watch.js
