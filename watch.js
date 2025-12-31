@@ -2,7 +2,7 @@ const puppeteer = require("puppeteer");
 const fs = require("fs");
 const fetch = require("node-fetch");
 
-const TARGET_URL = "https://www.2ndstreet.jp/search?category=930001";
+const TARGET_URL = https://www.2ndstreet.jp/search?category=930001;
 const CACHE_FILE = "count.txt";
 
 (async () => {
